@@ -1,89 +1,48 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Asli Karadas – Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asli Karadas – Fullstack Developer & Designer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-light: #ffffff;
-      --text-light: #333;
-      --bg-dark: #121212;
-      --text-dark: #f0f0f0;
-      --accent: #007acc;
-    }
-
-    html[data-theme="light"] {
-      background: var(--bg-light);
-      color: var(--text-light);
-    }
-
-    html[data-theme="dark"] {
-      background: var(--bg-dark);
-      color: var(--text-dark);
+      --bg: #ffffff;
+      --text: #333;
+      --accent: #e4b3b3;
+      --card-bg: #fefefe;
+      --dark-bg: #1a1a1a;
+      --dark-text: #f1f1f1;
     }
 
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      transition: background 0.3s ease, color 0.3s ease;
-    }
-    .nav-right {
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-        flex-wrap: wrap;
-      }
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      margin: 0;
-      padding: 0;
-    }
-    nav {
-      background-color: inherit;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background-color 0.3s, color 0.3s;
     }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      margin: 0;
-      padding: 0;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: inherit;
-      font-weight: 500;
-    }
     header.hero {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       padding: 4rem 2rem;
       background-color: var(--card-bg);
+      gap: 2rem;
     }
 
     .hero-image {
-      flex: 1 1 50%;
-      max-width: 600px;
+      flex: 1 1 60%;
       padding: 1rem;
     }
 
     .hero-image img {
       width: 100%;
+      height: 100%;
+      object-fit: cover;
       border-radius: 1rem;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
@@ -104,256 +63,204 @@
       margin-top: 1rem;
       font-size: 1rem;
     }
-    .controls {
-      display: flex;
-      gap: 1rem;
+
+    .theme-toggle, .language-toggle {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      margin-left: 1rem;
     }
 
-    .toggle-btn {
-      cursor: pointer;
-      background: none;
-      border: 1px solid var(--accent);
-      padding: 0.4rem 0.8rem;
-      border-radius: 6px;
-      color: inherit;
-      font-size: 0.9rem;
+    .language-toggle {
+      right: 5rem;
     }
 
-    header {
-      text-align: center;
-      padding: 4rem 2rem;
+    .nav {
+      position: absolute;
+      top: 1rem;
+      right: 9rem;
     }
 
-    header img {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 1rem;
+    .nav a {
+      margin-left: 1rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: bold;
     }
 
-    h1 {
-      font-size: 2.5rem;
-    }
-
-    section {
-      padding: 4rem 2rem;
-      max-width: 1000px;
-      margin: auto;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s ease-out;
-    }
-
-    section.reveal {
-      opacity: 1;
-      transform: none;
-    }
-
-    .project img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
+    .nav a:hover {
+      text-decoration: underline;
     }
 
     .scroll-top {
       position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      background: var(--accent);
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--accent);
       color: white;
+      padding: 0.5rem 1rem;
       border: none;
-      border-radius: 50%;
-      padding: 0.8rem 1rem;
-      font-size: 1.5rem;
+      border-radius: 2rem;
       cursor: pointer;
-      display: none;
-      z-index: 999;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     }
 
-    .scroll-top.show {
-      display: block;
+    .section {
+      padding: 4rem 2rem;
     }
 
-    /* Add other previous styles here (projects, contact, footer, etc.) */
+    .projects, .contact {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 1rem;
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .card p {
+      margin-top: 1rem;
+      font-size: 1rem;
+    }
+
+    .card a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 1rem;
+      display: inline-block;
+    }
+
+    .card a:hover {
+      text-decoration: underline;
+    }
+
   </style>
 </head>
 <body>
 
- <nav>
-    <div><strong>Asli Karadas</strong></div>
-    <div class="nav-right">
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <div class="controls">
-        <button class="toggle-btn" onclick="toggleTheme()">🌗</button>
-        <button class="toggle-btn" onclick="toggleLanguage()">🌍</button>
-      </div>
-    </div>
+  <nav class="nav">
+    <a href="#about" class="nav-link" data-en="About" data-de="Über mich">About</a>
+    <a href="#projects" class="nav-link" data-en="Projects" data-de="Projekte">Projects</a>
+    <a href="#contact" class="nav-link" data-en="Contact" data-de="Kontakt">Contact</a>
   </nav>
 
+  <button class="language-toggle" onclick="toggleLanguage()">EN | DE</button>
+  <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
 
- <header class="hero">
+  <header class="hero">
     <div class="hero-image">
       <img src="Hero.png" alt="Asli Karadas portrait" />
     </div>
     <div class="hero-text">
-      <h1>Asli Karadas</h1>
-      <p>Creative Full-Stack Developer | UI/UX Designer | Digital All-Rounder</p>
-      <p>With over six years of hands-on experience in web and print design, digital marketing, and social media, I merge full-stack development and UI/UX design with visual storytelling. I completed 100% of the Full-Stack Software Development programme at Code Institute and built a strong GitHub portfolio.</p>
+      <h1 class="hero-title" data-en="Asli Karadas" data-de="Asli Karadas">Asli Karadas</h1>
+      <p class="hero-description" data-en="Creative Full-Stack Developer | UI/UX Designer | Digital All-Rounder" data-de="Kreativer Full-Stack-Entwickler | UI/UX Designer | Digital Allrounder">
+        Creative Full-Stack Developer | UI/UX Designer | Digital All-Rounder
+      </p>
+      <p class="hero-text" data-en="With over six years of hands-on experience in web and print design, digital marketing, and social media, I merge full-stack development and UI/UX design with visual storytelling. I completed 100% of the Full-Stack Software Development programme at Code Institute and built a strong GitHub portfolio."
+        data-de="Mit über sechs Jahren praktischer Erfahrung in Web- und Druckdesign, digitalem Marketing und sozialen Medien verbinde ich Full-Stack-Entwicklung und UI/UX-Design mit visuellem Storytelling. Ich habe das Full-Stack-Software-Entwicklungsprogramm am Code Institute zu 100 % abgeschlossen und ein starkes GitHub-Portfolio aufgebaut.">
+        With over six years of hands-on experience in web and print design, digital marketing, and social media, I merge full-stack development and UI/UX design with visual storytelling. I completed 100% of the Full-Stack Software Development programme at Code Institute and built a strong GitHub portfolio.
+      </p>
     </div>
   </header>
 
   <section id="about" class="section">
-    <h2 class="lang-en">About Me</h2>
-    <h2 class="lang-de" style="display: none;">Über mich</h2>
-    <p class="lang-en">
-      I bring 6+ years of hands-on experience in design, development, and digital marketing.
-      Creative and versatile all-rounder with over 6 years of professional experience
-      in web design, print design and online/social media marketing. As a full-stack
-      developer and UI/UX designer, I combine technical know-how with visual
-      creativity and communication skills. I completed 100%	of the Full-Stack
-      Software Development programme with Code Institute and built a GitHub
-      portfolio with real-world projects.
-    </p>
-    <p class="lang-de" style="display: none;">
-      Ich bringe über 6 Jahre Erfahrung in Design, Entwicklung und digitalem Marketing mit. 
-      Kreative, vielseitige Allrounderin mit mehr als 6 Jahren Berufserfahrung in
-      Webdesign, Printdesign und Online-Marketing. Als Full-Stack-Entwicklerin und
-      UI/UX-Designerin bringe ich technische Kompetenz, visuelles Denken und starke
-      Kommunikationsfähigkeiten zusammen. Ich habe 100 %	des Full-Stack
-      Developer-Kurses bei Code Institute abgeschlossen und ein GitHub-Portfolio mit
-      Projekten aufgebaut.
-
+    <h2 class="section-title" data-en="About Me" data-de="Über mich">About Me</h2>
+    <p class="section-description" data-en="As a creative and versatile all-rounder, I bring over six years of hands-on experience in web and print design, digital marketing, and social media. With a strong foundation in full-stack development and UI/UX design, I merge tech skills with visual storytelling. I completed 100% of the Full-Stack Software Development programme at Code Institute and built a project-based GitHub portfolio."
+      data-de="Als kreativer und vielseitiger Allrounder bringe ich über sechs Jahre praktische Erfahrung in Web- und Printdesign, digitalem Marketing und sozialen Medien mit. Mit einer soliden Grundlage in der Full-Stack-Entwicklung und UI/UX-Design verbinde ich technische Fähigkeiten mit visuellem Storytelling. Ich habe das Full-Stack-Software-Entwicklungsprogramm am Code Institute zu 100 % abgeschlossen und ein projektbasiertes GitHub-Portfolio aufgebaut.">
+      As a creative and versatile all-rounder, I bring over six years of hands-on experience in web and print design, digital marketing, and social media. With a strong foundation in full-stack development and UI/UX design, I merge tech skills with visual storytelling. I completed 100% of the Full-Stack Software Development programme at Code Institute and built a project-based GitHub portfolio.
     </p>
   </section>
 
-   <section id="projects">
-    <h2>Projects</h2>
-     <div class="projects">
-      <div class="card project-card">
-        <img src="https://via.placeholder.com/400x250?text=Project+1" alt="Project 1">
-        <strong>NewsOnTime</strong><br />
-        A real-time news aggregator built with Django and React.<br />
-        <a href="https://github.com/AsliKaradas/newsontime" target="_blank">View on GitHub →</a>
+  <section id="projects" class="section">
+    <h2 class="section-title" data-en="Projects" data-de="Projekte">Projects</h2>
+    <div class="projects">
+      <div class="card">
+        <img src="newsontime.jpg" alt="NewsOnTime project" />
+        <h3 data-en="News On Time" data-de="News On Time">News On Time</h3>
+        <p data-en="A real-time news aggregator built with Django and React. It displays global headlines categorized by region and topic using a clean and responsive interface."
+          data-de="Ein Echtzeit-Nachrichtenaggregator, der mit Django und React erstellt wurde. Er zeigt globale Schlagzeilen an, die nach Region und Thema kategorisiert sind und eine saubere, anpassungsfähige Oberfläche bieten.">
+          A real-time news aggregator built with Django and React. It displays global headlines categorized by region and topic using a clean and responsive interface.
+        </p>
+        <a href="https://github.com/AsliKaradas/newsontime" target="_blank" data-en="View on GitHub" data-de="Auf GitHub ansehen">View on GitHub</a>
       </div>
-
-      <!-- Healthy Daily Life -->
-      <div class="card project-card">
-        <img src="preview-healthy.jpg" alt="Healthy Daily Life">
-        <div class="project-content">
-          <h3>Healthy Daily Life</h3>
-          <p>Personal health & habit tracking app created for full-stack dev course.</p>
-          <a href="https://github.com/AsliKaradas" target="_blank">View on GitHub →</a>
-        </div>
+      <div class="card">
+        <img src="healthydailylife.jpg" alt="Healthy Daily Life project" />
+        <h3 data-en="Healthy Daily Life" data-de="Gesundes tägliches Leben">Healthy Daily Life</h3>
+        <p data-en="A personal health and habit tracking web app created as part of a full-stack developer course."
+          data-de="Eine persönliche Gesundheits- und Gewohnheits-Tracking-Web-App, die im Rahmen eines Full-Stack-Entwickler-Kurses erstellt wurde.">
+          A personal health and habit tracking web app created as part of a full-stack developer course.
+        </p>
+        <a href="https://github.com/AsliKaradas/healthydailylife" target="_blank" data-en="View on GitHub" data-de="Auf GitHub ansehen">View on GitHub</a>
       </div>
-
-      <!-- Living Carpets -->
-     <div class="card project-card">
-        <img src="preview-livingcarpets.jpg" alt="Living Carpets">
-        <div class="project-content">
-          <h3>Living Carpets</h3>
-          <p>Webshop, strategy, consulting, and modern web design.</p>
-          <a href="https://www.livingcarpets.com" target="_blank">Visit Website →</a>
-        </div>
-      </div>
-
-      <!-- Servoking -->
-      <div class="card project-card">
-        <img src="preview-servoking.jpg" alt="Servoking">
-        <div class="project-content">
-          <h3>Servoking</h3>
-          <p>Web design and technical implementation for a service provider.</p>
-          <a href="https://www.servoking.at" target="_blank">Visit Website →</a>
-        </div>
-      </div>
-
-      <!-- Arctic Motion -->
-      <div class="card project-card">
-        <img src="preview-arcticmotion.jpg" alt="Arctic Motion">
-        <div class="project-content">
-          <h3>Arctic Motion</h3>
-          <p>Brand identity, digital experience, and modern UI.</p>
-          <a href="https://www.arctic-motion.com" target="_blank">Visit Website →</a>
-        </div>
-      </div>
-
-      <!-- Gurschler -->
-      <div class="card project-card">
-        <img src="preview-gurschler.jpg" alt="Gurschler & Gurschler">
-        <div class="project-content">
-          <h3>Gurschler & Gurschler</h3>
-          <p>Real estate site with automated import logic and CMS integration.</p>
-          <a href="https://www.gurschler-immobilien.at" target="_blank">Visit Website →</a>
-        </div>
-      </div>
-
-      <!-- S-Frutta -->
-      <div class="card project-card">
-        <img src="preview-sfrutta.jpg" alt="S-Frutta">
-        <div class="project-content">
-          <h3>S-Frutta</h3>
-          <p>Redesign & development for a fruit distribution company.</p>
-          <a href="https://www.sfrutta.at" target="_blank">Visit Website →</a>
-        </div>
-      </div>
-
     </div>
   </section>
 
-  <section id="contact">
-    <h2 class="lang-en">Contact</h2>
-    <h2 class="lang-de" style="display: none;">Kontakt</h2>
-    <div class="contact-info">
-      <p><strong>Email:</strong> <a href="mailto:karadas.asli@gmx.at">karadas.asli@gmx.at</a></p>
-      <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/asli-karadas" target="_blank">asli-karadas</a></p>
-    </div>
+  <section id="contact" class="section">
+    <h2 class="section-title" data-en="Contact" data-de="Kontakt">Contact</h2>
+    <p><strong>Email:</strong> <a href="mailto:karadas.asli@gmx.at" data-en="karadas.asli@gmx.at" data-de="karadas.asli@gmx.at">karadas.asli@gmx.at</a></p>
+    <p><strong>GitHub:</strong> <a href="https://github.com/AsliKaradas" target="_blank" data-en="AsliKaradas" data-de="AsliKaradas">AsliKaradas</a></p>
+    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/asli-karadas-51abaa247/" target="_blank" data-en="asli-karadas" data-de="asli-karadas">asli-karadas</a></p>
   </section>
 
-  <footer>
-    &copy; 2025 Asli Karadas · Made with ☕ and Code
-  </footer>
+  <button class="scroll-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">↑ Top</button>
 
-  <button class="scroll-top" onclick="scrollToTop()">↑</button>
 
-  <script>
-    function toggleTheme() {
-      const html = document.documentElement;
-      html.dataset.theme = html.dataset.theme === "dark" ? "light" : "dark";
-    }
+<!-- Smooth Scroll Script -->
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
 
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    window.addEventListener("scroll", () => {
-      document.querySelector(".scroll-top").classList.toggle("show", window.scrollY > 300);
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
     });
+  });
+</script>
 
-    function toggleLanguage() {
-      const langs = ['.lang-en', '.lang-de'];
-      langs.forEach(selector => {
-        document.querySelectorAll(selector).forEach(el => {
-          el.style.display = el.style.display === "none" ? "block" : "none";
-        });
-      });
+<!-- Scroll-to-Top Button Script -->
+<script>
+  const scrollTopButton = document.querySelector('.scroll-top');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+      scrollTopButton.style.display = 'block';
+    } else {
+      scrollTopButton.style.display = 'none';
     }
+  });
 
-    // Scroll animation
-    const revealSections = document.querySelectorAll("section");
-    const revealOnScroll = () => {
-      const trigger = window.innerHeight * 0.9;
-      revealSections.forEach(section => {
-        const top = section.getBoundingClientRect().top;
-        if (top < trigger) section.classList.add("reveal");
-      });
-    };
-    window.addEventListener("scroll", revealOnScroll);
-    revealOnScroll();
-  </script>
+  scrollTopButton.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+</script>
+
 
 </body>
+
 </html>
+
+
+
+
+
+
+        
