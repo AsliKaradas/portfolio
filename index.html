@@ -15,11 +15,12 @@
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(to right, #0a0a0a, #0f2c2c);
       color: #fff;
+      position: relative;
     }
     nav {
       width: 100%;
       display: flex;
-      justify-content: center;
+      justify-content: flex-end;
       align-items: center;
       padding: 1rem 2rem;
       background: transparent;
@@ -35,7 +36,7 @@
     nav ul li a {
       color: #ccc;
       text-decoration: none;
-      font-size: 1rem;
+      font-size: 0.95rem;
       transition: color 0.3s ease;
     }
     nav ul li a:hover {
@@ -76,9 +77,17 @@
       margin-bottom: 1rem;
       color: #a6c4a6;
     }
+    h2 {
+      margin-bottom: 1rem;
+      color: #7cb78d;
+    }
+    h3 {
+      color: #a6c4a6;
+      margin-bottom: 0.5rem;
+    }
     p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
       color: #ddd;
     }
     .button {
@@ -106,10 +115,6 @@
     .project:hover {
       transform: translateY(-5px);
     }
-    .project h3 {
-      color: #a6c4a6;
-      margin-bottom: 0.5rem;
-    }
     .project a {
       display: inline-block;
       margin-top: 1rem;
@@ -123,6 +128,27 @@
     .project a:hover {
       background-color: #6da17b;
       transform: scale(1.05);
+    }
+    #scrollToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #7cb78d;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      display: none;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      z-index: 1001;
+    }
+    #scrollToTop:hover {
+      background-color: #6da17b;
+      transform: scale(1.1);
     }
     footer {
       text-align: center;
@@ -138,10 +164,6 @@
     footer a:hover {
       text-decoration: underline;
       color: #6da17b;
-    }
-    h2 {
-      margin-bottom: 1rem;
-      color: #7cb78d;
     }
   </style>
 </head>
@@ -162,6 +184,7 @@
     <div class="right">
       <h1>Asli Karadas</h1>
       <p>Creative Full-Stack Developer | UI/UX Designer | Digital All-Rounder</p>
+      <p>As a creative and versatile all-rounder, I bring over six years of hands-on experience in web and print design, digital marketing, and social media. With a strong foundation in full-stack development and UI/UX design, I merge tech skills with visual storytelling. I completed 100% of the Full-Stack Software Development programme at Code Institute and built a project-based GitHub portfolio.</p>
       <a href="#contact" class="button">Contact Me</a>
     </div>
   </section>
@@ -183,7 +206,6 @@
   <section id="about">
     <h2>About Me</h2>
     <p>I'm Asli, a creative full-stack developer and designer with over 6 years of experience in digital design, online marketing, and development.</p>
-    <p>As a creative and versatile all-rounder, I bring over six years of hands-on experience in web and print design, digital marketing, and social media. With a strong foundation in full-stack development and UI/UX design, I merge tech skills with visual storytelling. I completed 100% of the Full-Stack Software Development programme at Code Institute and built a project-based GitHub portfolio.</p>
   </section>
 
   <section id="contact">
@@ -195,5 +217,18 @@
   <footer>
     <p>&copy; 2025 Asli Karadas</p>
   </footer>
+
+  <button id="scrollToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">↑</button>
+
+  <script>
+    const scrollBtn = document.getElementById("scrollToTop");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) {
+        scrollBtn.style.display = "block";
+      } else {
+        scrollBtn.style.display = "none";
+      }
+    });
+  </script>
 </body>
 </html>
