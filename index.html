@@ -3,234 +3,250 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Asli Karadas | Portfolio</title>
+  <title>Asli Karadas – Fullstack Developer & Designer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      scroll-behavior: smooth;
+    :root {
+      --bg: #fef9f8;
+      --accent: #e4b3b3;
+      --text: #333;
+      --headline: #2a2a2a;
+      --card-bg: #ffffff;
     }
+
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #0c1f1e, #1a3a36);
-      color: #fff;
-      position: relative;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      scroll-behavior: smooth; /* Smooth scrolling */
     }
+
+    header {
+      text-align: center;
+      padding: 3rem 1rem;
+      background-color: var(--card-bg);
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--headline);
+    }
+
+    h2 {
+      color: var(--accent);
+      font-weight: 400;
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem;
+    }
+
     nav {
-      width: 100%;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      padding: 1rem 2rem;
-      background: transparent;
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 1rem 0;
       z-index: 1000;
     }
+
     nav ul {
-      list-style: none;
       display: flex;
-      gap: 2rem;
+      justify-content: center;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
     }
+
+    nav ul li {
+      margin: 0 1rem;
+    }
+
     nav ul li a {
-      color: #ccc;
       text-decoration: none;
-      font-size: 0.95rem;
-      transition: color 0.3s ease;
+      color: var(--headline);
+      font-weight: 600;
+      font-size: 1rem;
     }
+
     nav ul li a:hover {
-      color: #7cb78d;
+      color: var(--accent);
     }
-    section {
-      padding: 4rem 2rem;
-      max-width: 1200px;
-      margin: auto;
-    }
-    #hero {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-      min-height: 90vh;
-    }
-    .left {
-      flex: 1;
-      min-width: 300px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .left img {
-      width: 100%;
-      max-width: 400px;
-      border-radius: 10px;
-      opacity: 0.9;
-      filter: grayscale(20%) brightness(90%);
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-    }
-    .right {
-      flex: 1;
-      min-width: 300px;
-    }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: #a6c4a6;
-    }
-    h2 {
-      margin-bottom: 1rem;
-      color: #7cb78d;
-    }
-    h3 {
-      color: #a6c4a6;
-      margin-bottom: 0.5rem;
-    }
-    p {
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
-      color: #ddd;
-    }
-    .button {
-      background-color: #7cb78d;
-      color: #fff;
-      text-decoration: none;
-      padding: 0.8rem 1.5rem;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-      width: fit-content;
-    }
-    .button:hover {
-      background-color: #6da17b;
-      transform: scale(1.05);
-    }
-    .project {
-      background-color: rgba(255, 255, 255, 0.05);
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 2rem;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
       padding: 2rem;
-      border-radius: 12px;
       margin-bottom: 2rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
       transition: transform 0.3s ease;
     }
-    .project:hover {
+
+    .card:hover {
       transform: translateY(-5px);
     }
-    .project a {
-      display: inline-block;
-      margin-top: 1rem;
-      background-color: #7cb78d;
-      color: #fff;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      text-decoration: none;
-      transition: background-color 0.3s ease, transform 0.3s ease;
+
+    .card img {
+      width: 100%;
+      height: auto;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
     }
-    .project a:hover {
-      background-color: #6da17b;
-      transform: scale(1.05);
+
+    .skills, .projects {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
     }
-    #scrollToTop {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #7cb78d;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 45px;
-      height: 45px;
-      font-size: 20px;
-      cursor: pointer;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-      display: none;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-      z-index: 1001;
-    }
-    #scrollToTop:hover {
-      background-color: #6da17b;
-      transform: scale(1.1);
-    }
-    footer {
+
+    .footer {
       text-align: center;
+      font-size: 0.9rem;
       padding: 2rem;
-      background: #0a0a0a;
-      margin-top: 2rem;
+      background-color: var(--card-bg);
     }
-    footer a {
-      color: #7cb78d;
+
+    .lang {
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+
+    a {
+      color: var(--accent);
       text-decoration: none;
-      transition: color 0.3s ease;
     }
-    footer a:hover {
+
+    a:hover {
       text-decoration: underline;
-      color: #6da17b;
+    }
+
+    section {
+      padding-top: 80px; /* Offset for fixed nav */
     }
   </style>
 </head>
 <body>
-
+  <!-- Navigation -->
   <nav>
     <ul>
-      <li><a href="#portfolio">Portfolio</a></li>
-      <li><a href="#about">About</a></li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
-  <section id="hero">
-    <div class="left">
-      <img src="Hero.jpg" alt="Asli Karadas">
-    </div>
-    <div class="right">
-      <h1>Asli Karadas</h1>
-      <p>Creative Full-Stack Developer | UI/UX Designer | Digital All-Rounder</p>
-      <p>As a creative and versatile all-rounder, I bring over six years of hands-on experience in web and print design, digital marketing, and social media. With a strong foundation in full-stack development and UI/UX design, I merge tech skills with visual storytelling. I completed 100% of the Full-Stack Software Development programme at Code Institute and built a project-based GitHub portfolio.</p>
-      <a href="#contact" class="button">Contact Me</a>
-    </div>
-  </section>
+  <header>
+    <h1>Asli Karadas</h1>
+    <p>Fullstack Developer · Web Designer · Media Expert</p>
+    <p class="lang">🇩🇪 · 🇬🇧 · 🇹🇷 · 🇪🇸</p>
+  </header>
 
-  <section id="portfolio">
-    <h2>Portfolio</h2>
-    <div class="project">
-      <h3>News Ontime</h3>
-      <p>A real-time news aggregator built with Django and React. It displays global headlines categorized by region and topic using a clean and responsive interface.</p>
-      <a href="https://github.com/AsliKaradas/news-ontime" target="_blank">View on GitHub</a>
-    </div>
-    <div class="project">
-      <h3>Healthy Daily Life</h3>
-      <p>A personal health and habit tracking web app created as part of a full-stack developer course.</p>
-      <a href="https://github.com/AsliKaradas/healthydailyliferesubmission" target="_blank">View on GitHub</a>
+  <section id="about" class="container">
+    <h2>✨ About Me</h2>
+    <div class="card">
+      <p>I am a creative all-rounder with a passion for design, technology, and communication. My goal is to create digital experiences that not only work but also inspire.</p>
     </div>
   </section>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I'm Asli, a creative full-stack developer and designer with over 6 years of experience in digital design, online marketing, and development.</p>
+  <section id="skills" class="container">
+    <h2>🎓 Skills</h2>
+    <div class="skills">
+      <div class="card">
+        <strong>Development</strong><br />
+        HTML, CSS, JS, Python, React, Django, REST, Git, APIs
+      </div>
+      <div class="card">
+        <strong>Design</strong><br />
+        Affinity Suite, Adobe CC, Figma, UI/UX, Responsive Design
+      </div>
+      <div class="card">
+        <strong>Marketing</strong><br />
+        Social Media, SEO/SEA, Analytics, Campaign Strategy
+      </div>
+      <div class="card">
+        <strong>Languages</strong><br />
+        German, English, Turkish, Spanish
+      </div>
+    </div>
   </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:karadas.asli@gmx.at">karadas.asli@gmx.at</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/aslikaradas" target="_blank">aslikaradas</a></p>
+  <section id="projects" class="container">
+    <h2>📁 Projects</h2>
+    <div class="projects">
+      <div class="card">
+        <img src="https://via.placeholder.com/400x250?text=NewsOnTime" alt="NewsOnTime Preview">
+        <strong>NewsOnTime</strong><br />
+        Django Web App for dynamic news display <br />
+        <a href="https://github.com/AsliKaradas/newsontime" target="_blank">View on GitHub →</a>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/400x250?text=Movie+Guide" alt="Movie Guide Preview">
+        <strong>Movie Guide</strong><br />
+        React App with API integration and filter functions<br />
+        <a href="https://github.com/AsliKaradas/Movie-Guide" target="_blank">View on GitHub →</a>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/400x250?text=Living+Carpets" alt="Living Carpets Preview">
+        <strong>Living Carpets</strong><br />
+        E-commerce website, strategy & consulting, web design<br />
+        <a href="https://www.livingcarpets.com" target="_blank">Visit Website →</a>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/400x250?text=Servoking" alt="Servoking Preview">
+        <strong>Servoking</strong><br />
+        Web design and technical implementation<br />
+        <a href="https://www.servoking.at" target="_blank">Visit Website →</a>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/400x250?text=Arctic+Motion" alt="Arctic Motion Preview">
+        <strong>Arctic Motion</strong><br />
+        Digital branding, modern UI<br />
+        <a href="https://www.arctic-motion.com" target="_blank">Visit Website →</a>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/400x250?text=Gurschler+%26+Gurschler" alt="Gurschler & Gurschler Preview">
+        <strong>Gurschler & Gurschler</strong><br />
+        Real estate website with import logic<br />
+        <a href="https://www.gurschler-immobilien.at" target="_blank">Visit Website →</a>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/400x250?text=S-Frutta" alt="S-Frutta Preview">
+        <strong>S-Frutta</strong><br />
+        Redesign & implementation, modern fruit website<br />
+        <a href="https://www.sfrutta.at" target="_blank">Visit Website →</a>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/400x250?text=Wiener+Barperlen" alt="Wiener Barperlen Preview">
+        <strong>Wiener Barperlen</strong><br />
+        Blog + bar filter, design & development<br />
+        <a href="https://www.wienerbarperlen.at" target="_blank">Visit Website →</a>
+      </div>
+    </div>
   </section>
 
-  <footer>
-    <p>&copy; 2025 Asli Karadas</p>
+  <section id="contact" class="container">
+    <h2>📬 Contact</h2>
+    <div class="card">
+      <p><strong>Email:</strong> karadas.asli@gmx.at</p>
+      <p><strong>GitHub:</strong> <a href="https://github.com/AsliKaradas" target="_blank">AsliKaradas</a></p>
+      <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/asli-karadas" target="_blank">asli-karadas</a></p>
+      <p><strong>Location:</strong> Vienna & ready for Dubai ✨</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    &copy; 2025 Asli Karadas · made with ❤️ and code
   </footer>
-
-  <button id="scrollToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">↑</button>
-
-  <script>
-    const scrollBtn = document.getElementById("scrollToTop");
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 300) {
-        scrollBtn.style.display = "block";
-      } else {
-        scrollBtn.style.display = "none";
-      }
-    });
-  </script>
 </body>
 </html>
