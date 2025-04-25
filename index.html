@@ -67,7 +67,43 @@
       color: inherit;
       font-weight: 500;
     }
+    header.hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 2rem;
+      background-color: var(--card-bg);
+    }
 
+    .hero-image {
+      flex: 1 1 50%;
+      max-width: 600px;
+      padding: 1rem;
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 1rem;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero-text {
+      flex: 1 1 40%;
+      max-width: 500px;
+      padding: 1rem;
+    }
+
+    .hero-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--text);
+    }
+
+    .hero-text p {
+      margin-top: 1rem;
+      font-size: 1rem;
+    }
     .controls {
       display: flex;
       gap: 1rem;
@@ -160,11 +196,15 @@
   </nav>
 
 
-  <header>
-    <img src="Hero.png" alt="Asli Karadas">
-    <h1>Asli Karadas</h1>
-    <p class="lang-en">Creative Full-Stack Developer · UI/UX Designer · Digital All-Rounder</p>
-    <p class="lang-de" style="display: none;">Kreative Full-Stack Entwicklerin · UI/UX Designerin · Digitale Allrounderin</p>
+ <header class="hero">
+    <div class="hero-image">
+      <img src="your-photo.jpg" alt="Asli Karadas portrait" />
+    </div>
+    <div class="hero-text">
+      <h1>Asli Karadas</h1>
+      <p>Creative Full-Stack Developer | UI/UX Designer | Digital All-Rounder</p>
+      <p>With over six years of hands-on experience in web and print design, digital marketing, and social media, I merge full-stack development and UI/UX design with visual storytelling. I completed 100% of the Full-Stack Software Development programme at Code Institute and built a strong GitHub portfolio.</p>
+    </div>
   </header>
 
   <section id="about" class="section">
