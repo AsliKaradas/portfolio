@@ -29,7 +29,20 @@
       font-family: 'Poppins', sans-serif;
       transition: background 0.3s ease, color 0.3s ease;
     }
+    .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
 
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
     nav {
       background-color: inherit;
       padding: 1rem 2rem;
@@ -131,21 +144,24 @@
 </head>
 <body>
 
-  <nav>
+ <nav>
     <div><strong>Asli Karadas</strong></div>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div class="controls">
-      <button class="toggle-btn" onclick="toggleTheme()">🌗 Mode</button>
-      <button class="toggle-btn" onclick="toggleLanguage()">🌍 EN/DE</button>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="controls">
+        <button class="toggle-btn" onclick="toggleTheme()">🌗</button>
+        <button class="toggle-btn" onclick="toggleLanguage()">🌍</button>
+      </div>
     </div>
   </nav>
 
+
   <header>
-    <img src="your-photo.jpg" alt="Asli Karadas">
+    <img src="Hero.png" alt="Asli Karadas">
     <h1>Asli Karadas</h1>
     <p class="lang-en">Creative Full-Stack Developer · UI/UX Designer · Digital All-Rounder</p>
     <p class="lang-de" style="display: none;">Kreative Full-Stack Entwicklerin · UI/UX Designerin · Digitale Allrounderin</p>
@@ -155,29 +171,38 @@
     <h2 class="lang-en">About Me</h2>
     <h2 class="lang-de" style="display: none;">Über mich</h2>
     <p class="lang-en">
-      I bring 6+ years of hands-on experience in design, development, and digital marketing...
+      I bring 6+ years of hands-on experience in design, development, and digital marketing.
+      Creative and versatile all-rounder with over 6 years of professional experience
+      in web design, print design and online/social media marketing. As a full-stack
+      developer and UI/UX designer, I combine technical know-how with visual
+      creativity and communication skills. I completed 100%	of the Full-Stack
+      Software Development programme with Code Institute and built a GitHub
+      portfolio with real-world projects.
     </p>
     <p class="lang-de" style="display: none;">
-      Ich bringe über 6 Jahre Erfahrung in Design, Entwicklung und digitalem Marketing mit...
+      Ich bringe über 6 Jahre Erfahrung in Design, Entwicklung und digitalem Marketing mit. 
+      Kreative, vielseitige Allrounderin mit mehr als 6 Jahren Berufserfahrung in
+      Webdesign, Printdesign und Online-Marketing. Als Full-Stack-Entwicklerin und
+      UI/UX-Designerin bringe ich technische Kompetenz, visuelles Denken und starke
+      Kommunikationsfähigkeiten zusammen. Ich habe 100 %	des Full-Stack
+      Developer-Kurses bei Code Institute abgeschlossen und ein GitHub-Portfolio mit
+      Projekten aufgebaut.
+
     </p>
   </section>
 
    <section id="projects">
     <h2>Projects</h2>
-    <div class="projects">
-
-      <!-- NewsOntime -->
-      <div class="project">
-        <img src="preview-newsontime.jpg" alt="News Ontime">
-        <div class="project-content">
-          <h3>News Ontime</h3>
-          <p>Real-time news app built with Django & React. Categorized headlines, responsive UI.</p>
-          <a href="https://github.com/AsliKaradas/newsontime" target="_blank">View on GitHub →</a>
-        </div>
+     <div class="projects">
+      <div class="card project-card">
+        <img src="https://via.placeholder.com/400x250?text=Project+1" alt="Project 1">
+        <strong>NewsOnTime</strong><br />
+        A real-time news aggregator built with Django and React.<br />
+        <a href="https://github.com/AsliKaradas/newsontime" target="_blank">View on GitHub →</a>
       </div>
 
       <!-- Healthy Daily Life -->
-      <div class="project">
+      <div class="card project-card">
         <img src="preview-healthy.jpg" alt="Healthy Daily Life">
         <div class="project-content">
           <h3>Healthy Daily Life</h3>
@@ -187,7 +212,7 @@
       </div>
 
       <!-- Living Carpets -->
-      <div class="project">
+     <div class="card project-card">
         <img src="preview-livingcarpets.jpg" alt="Living Carpets">
         <div class="project-content">
           <h3>Living Carpets</h3>
@@ -197,7 +222,7 @@
       </div>
 
       <!-- Servoking -->
-      <div class="project">
+      <div class="card project-card">
         <img src="preview-servoking.jpg" alt="Servoking">
         <div class="project-content">
           <h3>Servoking</h3>
@@ -207,7 +232,7 @@
       </div>
 
       <!-- Arctic Motion -->
-      <div class="project">
+      <div class="card project-card">
         <img src="preview-arcticmotion.jpg" alt="Arctic Motion">
         <div class="project-content">
           <h3>Arctic Motion</h3>
@@ -217,7 +242,7 @@
       </div>
 
       <!-- Gurschler -->
-      <div class="project">
+      <div class="card project-card">
         <img src="preview-gurschler.jpg" alt="Gurschler & Gurschler">
         <div class="project-content">
           <h3>Gurschler & Gurschler</h3>
@@ -227,7 +252,7 @@
       </div>
 
       <!-- S-Frutta -->
-      <div class="project">
+      <div class="card project-card">
         <img src="preview-sfrutta.jpg" alt="S-Frutta">
         <div class="project-content">
           <h3>S-Frutta</h3>
