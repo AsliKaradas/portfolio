@@ -1,23 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Asli Karadas – Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
+    :root {
+      --bg-light: #ffffff;
+      --text-light: #333;
+      --bg-dark: #121212;
+      --text-dark: #f0f0f0;
+      --accent: #007acc;
+    }
+
+    html[data-theme="light"] {
+      background: var(--bg-light);
+      color: var(--text-light);
+    }
+
+    html[data-theme="dark"] {
+      background: var(--bg-dark);
+      color: var(--text-dark);
     }
 
     body {
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #fff;
-      color: #333;
+      font-family: 'Poppins', sans-serif;
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
     nav {
-      background-color: #f8f8f8;
+      background-color: inherit;
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
@@ -29,41 +43,36 @@
 
     nav ul {
       list-style: none;
-      margin: 0;
-      padding: 0;
       display: flex;
       gap: 1.5rem;
+      margin: 0;
+      padding: 0;
     }
 
     nav a {
       text-decoration: none;
-      color: #333;
+      color: inherit;
       font-weight: 500;
     }
 
-    nav li {
-      position: relative;
+    .controls {
+      display: flex;
+      gap: 1rem;
     }
 
-    nav li ul {
-      display: none;
-      position: absolute;
-      background-color: #f8f8f8;
-      list-style: none;
-      padding: 0.5rem;
-      top: 100%;
-      left: 0;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    }
-
-    nav li:hover ul {
-      display: block;
+    .toggle-btn {
+      cursor: pointer;
+      background: none;
+      border: 1px solid var(--accent);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      color: inherit;
+      font-size: 0.9rem;
     }
 
     header {
       text-align: center;
       padding: 4rem 2rem;
-      background-color: #f0f0f0;
     }
 
     header img {
@@ -74,8 +83,7 @@
       margin-bottom: 1rem;
     }
 
-    header h1 {
-      margin: 0.5rem 0;
+    h1 {
       font-size: 2.5rem;
     }
 
@@ -83,30 +91,14 @@
       padding: 4rem 2rem;
       max-width: 1000px;
       margin: auto;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease-out;
     }
 
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .project {
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      overflow: hidden;
-      background-color: #fff;
-      transition: box-shadow 0.3s ease;
-    }
-
-    .project:hover {
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    section.reveal {
+      opacity: 1;
+      transform: none;
     }
 
     .project img {
@@ -115,50 +107,26 @@
       object-fit: cover;
     }
 
-    .project-content {
-      padding: 1rem;
-    }
-
-    .project-content h3 {
-      margin-top: 0;
-    }
-
-    .project-content a {
-      color: #007acc;
-      text-decoration: none;
-    }
-
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      max-width: 600px;
-      margin: auto;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-      padding: 0.75rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
-    }
-
-    .contact-form button {
-      padding: 0.75rem;
-      background-color: #333;
+    .scroll-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--accent);
       color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 50%;
+      padding: 0.8rem 1rem;
+      font-size: 1.5rem;
       cursor: pointer;
+      display: none;
+      z-index: 999;
     }
 
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background-color: #f8f8f8;
-      font-size: 0.9rem;
+    .scroll-top.show {
+      display: block;
     }
+
+    /* Add other previous styles here (projects, contact, footer, etc.) */
   </style>
 </head>
 <body>
@@ -167,64 +135,160 @@
     <div><strong>Asli Karadas</strong></div>
     <ul>
       <li><a href="#about">About</a></li>
-      <li>
-        <a href="#projects">Projects</a>
-        <ul>
-          <li><a href="#projects">Development</a></li>
-          <li><a href="#projects">UI/UX</a></li>
-        </ul>
-      </li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+    <div class="controls">
+      <button class="toggle-btn" onclick="toggleTheme()">🌗 Mode</button>
+      <button class="toggle-btn" onclick="toggleLanguage()">🌍 EN/DE</button>
+    </div>
   </nav>
 
   <header>
     <img src="your-photo.jpg" alt="Asli Karadas">
     <h1>Asli Karadas</h1>
-    <p>Creative Full-Stack Developer · UI/UX Designer · Digital All-Rounder</p>
+    <p class="lang-en">Creative Full-Stack Developer · UI/UX Designer · Digital All-Rounder</p>
+    <p class="lang-de" style="display: none;">Kreative Full-Stack Entwicklerin · UI/UX Designerin · Digitale Allrounderin</p>
   </header>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>As a creative and versatile all-rounder, I bring over six years of hands-on experience in web and print design, digital marketing, and social media. With a strong foundation in full-stack development and UI/UX design, I merge tech skills with visual storytelling. I completed 100% of the Full-Stack Software Development programme at Code Institute and built a project-based GitHub portfolio.</p>
+  <section id="about" class="section">
+    <h2 class="lang-en">About Me</h2>
+    <h2 class="lang-de" style="display: none;">Über mich</h2>
+    <p class="lang-en">
+      I bring 6+ years of hands-on experience in design, development, and digital marketing...
+    </p>
+    <p class="lang-de" style="display: none;">
+      Ich bringe über 6 Jahre Erfahrung in Design, Entwicklung und digitalem Marketing mit...
+    </p>
   </section>
 
-  <section id="projects">
+   <section id="projects">
     <h2>Projects</h2>
     <div class="projects">
+
+      <!-- NewsOntime -->
       <div class="project">
         <img src="preview-newsontime.jpg" alt="News Ontime">
         <div class="project-content">
           <h3>News Ontime</h3>
-          <p>Real-time news app using Django & React. Categorized headlines with responsive UI.</p>
+          <p>Real-time news app built with Django & React. Categorized headlines, responsive UI.</p>
           <a href="https://github.com/AsliKaradas/newsontime" target="_blank">View on GitHub →</a>
         </div>
       </div>
+
+      <!-- Healthy Daily Life -->
       <div class="project">
         <img src="preview-healthy.jpg" alt="Healthy Daily Life">
         <div class="project-content">
           <h3>Healthy Daily Life</h3>
-          <p>A personal health and habit tracker built as a full-stack project.</p>
-          <a href="https://github.com/AsliKaradas/Healthy-Daily-Life" target="_blank">View on GitHub →</a>
+          <p>Personal health & habit tracking app created for full-stack dev course.</p>
+          <a href="https://github.com/AsliKaradas" target="_blank">View on GitHub →</a>
         </div>
       </div>
-      <!-- Add more project cards here -->
+
+      <!-- Living Carpets -->
+      <div class="project">
+        <img src="preview-livingcarpets.jpg" alt="Living Carpets">
+        <div class="project-content">
+          <h3>Living Carpets</h3>
+          <p>Webshop, strategy, consulting, and modern web design.</p>
+          <a href="https://www.livingcarpets.com" target="_blank">Visit Website →</a>
+        </div>
+      </div>
+
+      <!-- Servoking -->
+      <div class="project">
+        <img src="preview-servoking.jpg" alt="Servoking">
+        <div class="project-content">
+          <h3>Servoking</h3>
+          <p>Web design and technical implementation for a service provider.</p>
+          <a href="https://www.servoking.at" target="_blank">Visit Website →</a>
+        </div>
+      </div>
+
+      <!-- Arctic Motion -->
+      <div class="project">
+        <img src="preview-arcticmotion.jpg" alt="Arctic Motion">
+        <div class="project-content">
+          <h3>Arctic Motion</h3>
+          <p>Brand identity, digital experience, and modern UI.</p>
+          <a href="https://www.arctic-motion.com" target="_blank">Visit Website →</a>
+        </div>
+      </div>
+
+      <!-- Gurschler -->
+      <div class="project">
+        <img src="preview-gurschler.jpg" alt="Gurschler & Gurschler">
+        <div class="project-content">
+          <h3>Gurschler & Gurschler</h3>
+          <p>Real estate site with automated import logic and CMS integration.</p>
+          <a href="https://www.gurschler-immobilien.at" target="_blank">Visit Website →</a>
+        </div>
+      </div>
+
+      <!-- S-Frutta -->
+      <div class="project">
+        <img src="preview-sfrutta.jpg" alt="S-Frutta">
+        <div class="project-content">
+          <h3>S-Frutta</h3>
+          <p>Redesign & development for a fruit distribution company.</p>
+          <a href="https://www.sfrutta.at" target="_blank">Visit Website →</a>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <section id="contact">
-    <h2>Contact</h2>
-    <form class="contact-form">
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+    <h2 class="lang-en">Contact</h2>
+    <h2 class="lang-de" style="display: none;">Kontakt</h2>
+    <div class="contact-info">
+      <p><strong>Email:</strong> <a href="mailto:karadas.asli@gmx.at">karadas.asli@gmx.at</a></p>
+      <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/asli-karadas" target="_blank">asli-karadas</a></p>
+    </div>
   </section>
 
   <footer>
-    &copy; 2025 Asli Karadas · Designed with 💻 & ☕
+    &copy; 2025 Asli Karadas · Made with ☕ and Code
   </footer>
+
+  <button class="scroll-top" onclick="scrollToTop()">↑</button>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.dataset.theme = html.dataset.theme === "dark" ? "light" : "dark";
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    window.addEventListener("scroll", () => {
+      document.querySelector(".scroll-top").classList.toggle("show", window.scrollY > 300);
+    });
+
+    function toggleLanguage() {
+      const langs = ['.lang-en', '.lang-de'];
+      langs.forEach(selector => {
+        document.querySelectorAll(selector).forEach(el => {
+          el.style.display = el.style.display === "none" ? "block" : "none";
+        });
+      });
+    }
+
+    // Scroll animation
+    const revealSections = document.querySelectorAll("section");
+    const revealOnScroll = () => {
+      const trigger = window.innerHeight * 0.9;
+      revealSections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if (top < trigger) section.classList.add("reveal");
+      });
+    };
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
+  </script>
 
 </body>
 </html>
