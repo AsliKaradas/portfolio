@@ -3,253 +3,228 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Asli Karadas – Fullstack Developer & UI/UX Designer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <title>Asli Karadas – Portfolio</title>
   <style>
-    :root {
-      --bg: #fef9f8;
-      --accent: #e4b3b3;
-      --text: #333;
-      --headline: #2a2a2a;
-      --card-bg: #ffffff;
+    * {
+      box-sizing: border-box;
     }
 
     body {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      scroll-behavior: smooth; /* Smooth scrolling */
-    }
-
-    header {
-      text-align: center;
-      padding: 3rem 1rem;
-      background-color: var(--card-bg);
-    }
-
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-      color: var(--headline);
-    }
-
-    h2 {
-      color: var(--accent);
-      font-weight: 400;
-      margin-top: 3rem;
-      text-align: center;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 2rem;
+      font-family: 'Arial', sans-serif;
+      background-color: #fff;
+      color: #333;
     }
 
     nav {
-      position: fixed;
+      background-color: #f8f8f8;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
       top: 0;
-      left: 0;
-      width: 100%;
-      background-color: #fff;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      padding: 1rem 0;
       z-index: 1000;
     }
 
     nav ul {
-      display: flex;
-      justify-content: center;
-      list-style-type: none;
-      padding: 0;
+      list-style: none;
       margin: 0;
-    }
-
-    nav ul li {
-      margin: 0 1rem;
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      color: var(--headline);
-      font-weight: 600;
-      font-size: 1rem;
-    }
-
-    nav ul li a:hover {
-      color: var(--accent);
-    }
-
-    .card {
-      background: var(--card-bg);
-      border-radius: 2rem;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-      padding: 2rem;
-      margin-bottom: 2rem;
-      transition: transform 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card img {
-      width: 100%;
-      height: auto;
-      border-radius: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .skills, .projects {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      padding: 0;
+      display: flex;
       gap: 1.5rem;
     }
 
-    .footer {
-      text-align: center;
-      font-size: 0.9rem;
-      padding: 2rem;
-      background-color: var(--card-bg);
-    }
-
-    .lang {
-      font-size: 0.8rem;
-      opacity: 0.7;
-    }
-
-    a {
-      color: var(--accent);
+    nav a {
       text-decoration: none;
+      color: #333;
+      font-weight: 500;
     }
 
-    a:hover {
-      text-decoration: underline;
+    nav li {
+      position: relative;
+    }
+
+    nav li ul {
+      display: none;
+      position: absolute;
+      background-color: #f8f8f8;
+      list-style: none;
+      padding: 0.5rem;
+      top: 100%;
+      left: 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    nav li:hover ul {
+      display: block;
+    }
+
+    header {
+      text-align: center;
+      padding: 4rem 2rem;
+      background-color: #f0f0f0;
+    }
+
+    header img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+
+    header h1 {
+      margin: 0.5rem 0;
+      font-size: 2.5rem;
     }
 
     section {
-      padding-top: 80px; /* Offset for fixed nav */
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .project {
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: #fff;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .project:hover {
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .project img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .project-content {
+      padding: 1rem;
+    }
+
+    .project-content h3 {
+      margin-top: 0;
+    }
+
+    .project-content a {
+      color: #007acc;
+      text-decoration: none;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .contact-form button {
+      padding: 0.75rem;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #f8f8f8;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
-  <!-- Navigation -->
+
   <nav>
+    <div><strong>Asli Karadas</strong></div>
     <ul>
-      <li><a href="#about">About Me</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
+      <li><a href="#about">About</a></li>
+      <li>
+        <a href="#projects">Projects</a>
+        <ul>
+          <li><a href="#projects">Development</a></li>
+          <li><a href="#projects">UI/UX</a></li>
+        </ul>
+      </li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
   <header>
+    <img src="your-photo.jpg" alt="Asli Karadas">
     <h1>Asli Karadas</h1>
-    <p>Creative Full-Stack Developer | UI/UX Designer | Digital All-Rounder</p>
-    <p class="lang">🇩🇪 · 🇬🇧 · 🇹🇷 · 🇪🇸</p>
+    <p>Creative Full-Stack Developer · UI/UX Designer · Digital All-Rounder</p>
   </header>
 
-  <section id="about" class="container">
-    <h2>✨ About Me</h2>
-    <div class="card">
-      <p>I am a creative and versatile all-rounder with over six years of experience in web and print design, digital marketing, and social media. With a strong foundation in full-stack development and UI/UX design, I merge tech skills with visual storytelling.</p>
-      <p>I completed 100% of the Full-Stack Software Development programme at Code Institute and built a project-based GitHub portfolio.</p>
-    </div>
+  <section id="about">
+    <h2>About Me</h2>
+    <p>As a creative and versatile all-rounder, I bring over six years of hands-on experience in web and print design, digital marketing, and social media. With a strong foundation in full-stack development and UI/UX design, I merge tech skills with visual storytelling. I completed 100% of the Full-Stack Software Development programme at Code Institute and built a project-based GitHub portfolio.</p>
   </section>
 
-  <section id="skills" class="container">
-    <h2>🎓 Skills</h2>
-    <div class="skills">
-      <div class="card">
-        <strong>Development</strong><br />
-        HTML, CSS, JS, Python, React, Django, REST, Git, APIs
-      </div>
-      <div class="card">
-        <strong>Design</strong><br />
-        Affinity Suite, Adobe CC, Figma, UI/UX, Responsive Design
-      </div>
-      <div class="card">
-        <strong>Marketing</strong><br />
-        Social Media, SEO/SEA, Analytics, Campaign Strategy
-      </div>
-      <div class="card">
-        <strong>Languages</strong><br />
-        German, English, Turkish, Spanish
-      </div>
-    </div>
-  </section>
-
-  <section id="projects" class="container">
-    <h2>📁 Projects</h2>
+  <section id="projects">
+    <h2>Projects</h2>
     <div class="projects">
-      <!-- Old Projects -->
-      <div class="card">
-        <img src="https://via.placeholder.com/400x250?text=NewsOnTime" alt="NewsOnTime Preview">
-        <strong>News OnTime</strong><br />
-        A real-time news aggregator built with Django and React. It displays global headlines categorized by region and topic using a clean and responsive interface.<br />
-        <a href="https://github.com/AsliKaradas/newsontime" target="_blank">View on GitHub →</a>
+      <div class="project">
+        <img src="preview-newsontime.jpg" alt="News Ontime">
+        <div class="project-content">
+          <h3>News Ontime</h3>
+          <p>Real-time news app using Django & React. Categorized headlines with responsive UI.</p>
+          <a href="https://github.com/AsliKaradas/newsontime" target="_blank">View on GitHub →</a>
+        </div>
       </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/400x250?text=Healthy+Daily+Life" alt="Healthy Daily Life Preview">
-        <strong>Healthy Daily Life</strong><br />
-        A personal health and habit tracking web app created as part of a full-stack developer course.<br />
-        <a href="https://github.com/AsliKaradas/Healthy-Daily-Life" target="_blank">View on GitHub →</a>
+      <div class="project">
+        <img src="preview-healthy.jpg" alt="Healthy Daily Life">
+        <div class="project-content">
+          <h3>Healthy Daily Life</h3>
+          <p>A personal health and habit tracker built as a full-stack project.</p>
+          <a href="https://github.com/AsliKaradas/Healthy-Daily-Life" target="_blank">View on GitHub →</a>
+        </div>
       </div>
-
-      <!-- New Projects -->
-      <div class="card">
-        <strong>Movie Guide</strong><br />
-        React app with API integration and filtering features.<br />
-        <a href="https://github.com/AsliKaradas/Movie-Guide" target="_blank">View on GitHub →</a>
-      </div>
-      <div class="card">
-        <strong>Living Carpets</strong><br />
-        Webshop, strategy & consulting, web design.<br />
-        <a href="https://www.livingcarpets.com" target="_blank">View Website →</a>
-      </div>
-      <div class="card">
-        <strong>Servoking</strong><br />
-        Web design and technical implementation.<br />
-        <a href="https://www.servoking.at" target="_blank">View Website →</a>
-      </div>
-      <div class="card">
-        <strong>Arctic Motion</strong><br />
-        Digital brand identity, modern UI.<br />
-        <a href="https://www.arctic-motion.com" target="_blank">View Website →</a>
-      </div>
-      <div class="card">
-        <strong>Gurschler & Gurschler</strong><br />
-        Real estate website with import logic.<br />
-        <a href="https://www.gurschler-immobilien.at" target="_blank">View Website →</a>
-      </div>
-      <div class="card">
-        <strong>S-Frutta</strong><br />
-        Re-design & implementation, modern fruit website.<br />
-        <a href="https://www.sfrutta.at" target="_blank">View Website →</a>
-      </div>
-      <div class="card">
-        <strong>Wiener Barperlen</strong><br />
-        Blog + bar filter, design & development.<br />
-        <a href="https://www.wienerbarperlen.at" target="_blank">View Website →</a>
-      </div>
+      <!-- Add more project cards here -->
     </div>
   </section>
 
-  <section id="contact" class="container">
-    <h2>📬 Contact</h2>
-    <div class="card">
-      <p><strong>Email:</strong> karadas.asli@gmx.at</p>
-      <p><strong>GitHub:</strong> <a href="https://github.com/AsliKaradas" target="_blank">AsliKaradas</a></p>
-      <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/asli-karadas" target="_blank">asli-karadas</a></p>
-      <p><strong>Location:</strong> Vienna & ready for Dubai ✨</p>
-    </div>
+  <section id="contact">
+    <h2>Contact</h2>
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
   </section>
 
-  <footer class="footer">
-    &copy; 2025 Asli Karadas · made with ❤️ and code
+  <footer>
+    &copy; 2025 Asli Karadas · Designed with 💻 & ☕
   </footer>
+
 </body>
 </html>
