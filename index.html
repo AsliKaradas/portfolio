@@ -3,269 +3,205 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Asli Karadas – Fullstack Developer & Designer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <title>Webentwickler Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     :root {
-      --bg: #ffffff;
-      --text: #333;
-      --accent: #e4b3b3;
-      --card-bg: #fefefe;
-      --dark-bg: #1a1a1a;
-      --dark-text: #f1f1f1;
+      --bg-color: #0d0d0d;
+      --text-color: #f0f0f0;
+      --accent-color: #1aaf5d;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      transition: background-color 0.3s, color 0.3s;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
     }
 
-    header.hero {
-        flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
+    nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      background: rgba(0,0,0,0.8);
+      padding: 1em 2em;
+      z-index: 1000;
     }
 
-    .hero-image {
-       flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-    }
-
-    .hero-image img {
-       flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-    }
-
-    .hero-text {
-       flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-
-    }
-
-    .hero-text h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      color: var(--text);
-      
-    }
-
-    .hero-text p {
-      margin-top: 1rem;
-      font-size: 1rem;
-    }
-
-    .theme-toggle, .language-toggle {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      margin-left: 1rem;
-    }
-
-    .language-toggle {
-      right: 5rem;
-    }
-
-    .nav {
-      position: absolute;
-      top: 1rem;
-      right: 9rem;
-    }
-
-    .nav a {
-      margin-left: 1rem;
-      color: var(--accent);
+    nav a {
+      color: var(--accent-color);
+      margin-left: 1em;
       text-decoration: none;
       font-weight: bold;
     }
 
-    .nav a:hover {
-      text-decoration: underline;
+    .hero {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2em;
     }
 
-    .scroll-top {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: var(--accent);
-      color: white;
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 2rem;
-      cursor: pointer;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    .hero h1 {
+      font-size: 2.5em;
     }
 
-    .section {
-      padding: 4rem 2rem;
+    section {
+      padding: 4em 2em;
+      max-width: 1200px;
+      margin: auto;
     }
 
-    .projects, .contact {
+    #about {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2em;
+    }
+
+    #about img {
+      max-width: 300px;
+      border-radius: 10px;
+    }
+
+    .projects {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5em;
     }
 
     .card {
-      background: var(--card-bg);
-      border-radius: 1rem;
-      padding: 1.5rem;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      background: #1a1a1a;
+      padding: 1em;
+      border-radius: 10px;
+      border-left: 5px solid var(--accent-color);
+      transition: transform 0.2s;
     }
 
-    .card img {
-      width: 100%;
-      border-radius: 1rem;
-    }
-
-    .card h3 {
-      font-size: 1.5rem;
-      margin-top: 1rem;
-    }
-
-    .card p {
-      margin-top: 1rem;
-      font-size: 1rem;
+    .card:hover {
+      transform: scale(1.02);
     }
 
     .card a {
-      color: var(--accent);
       text-decoration: none;
-      font-weight: bold;
-      margin-top: 1rem;
-      display: inline-block;
+      color: var(--accent-color);
+      display: block;
+      margin-top: 0.5em;
     }
 
-    .card a:hover {
-      text-decoration: underline;
+    #contact a {
+      color: var(--accent-color);
+      margin-right: 1em;
+      font-size: 1.2em;
+      text-decoration: none;
     }
 
+    footer {
+      text-align: center;
+      padding: 2em;
+      background: #111;
+      color: #aaa;
+    }
+
+    footer .social-icons a {
+      margin: 0 0.5em;
+      color: var(--accent-color);
+      font-size: 1.5em;
+    }
+
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 0.5em 0.8em;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+    }
   </style>
 </head>
 <body>
 
-  <nav class="nav">
-    <a href="#about" class="nav-link" data-en="About" data-de="Über mich">About</a>
-    <a href="#projects" class="nav-link" data-en="Projects" data-de="Projekte">Projects</a>
-    <a href="#contact" class="nav-link" data-en="Contact" data-de="Kontakt">Contact</a>
+  <nav>
+    <a href="#about">About Me</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
   </nav>
 
-  <button class="language-toggle" onclick="toggleLanguage()">EN | DE</button>
-  <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+  <section class="hero" id="home">
+    <h1><!-- Dein Mission Statement hier -->  
+    „Ich entwickle moderne Weblösungen mit Fokus auf Ästhetik und Performance.“</h1>
+  </section>
 
-  <header class="hero">
-    <div class="hero-image">
-      <img src="Hero.png" alt="Asli Karadas portrait" />
-    </div>
-    <div class="hero-text">
-      <h1 class="hero-title" data-en="Asli Karadas" data-de="Asli Karadas">Asli Karadas</h1>
-      <p class="hero-description" data-en="Creative Full-Stack Developer | UI/UX Designer | Digital All-Rounder" data-de="Kreativer Full-Stack-Entwickler | UI/UX Designer | Digital Allrounder">
-        Creative Full-Stack Developer | UI/UX Designer | Digital All-Rounder
-      </p>
-      <p class="hero-text" data-en="With over six years of hands-on experience in web and print design, digital marketing, and social media, I merge full-stack development and UI/UX design with visual storytelling. I completed 100% of the Full-Stack Software Development programme at Code Institute and built a strong GitHub portfolio."
-        data-de="Mit über sechs Jahren praktischer Erfahrung in Web- und Druckdesign, digitalem Marketing und sozialen Medien verbinde ich Full-Stack-Entwicklung und UI/UX-Design mit visuellem Storytelling. Ich habe das Full-Stack-Software-Entwicklungsprogramm am Code Institute zu 100 % abgeschlossen und ein starkes GitHub-Portfolio aufgebaut.">
-        With over six years of hands-on experience in web and print design, digital marketing, and social media, I merge full-stack development and UI/UX design with visual storytelling. I completed 100% of the Full-Stack Software Development programme at Code Institute and built a strong GitHub portfolio.
+  <section id="about">
+    <div style="flex: 1">
+      <h2>Über mich</h2>
+      <p><!-- Dein Text hier als Platzhalter -->  
+        Hier kannst du etwas über deine Erfahrungen, deinen Werdegang und deine Skills schreiben.
       </p>
     </div>
-  </header>
+    <div>
+      <img src="https://via.placeholder.com/300x400" alt="Dein Foto" />
+    </div>
+  </section>
 
-  <section id="about" class="section">
-    <h2 class="section-title" data-en="About Me" data-de="Über mich">About Me</h2>
-    <p class="section-description" data-en="As a creative and versatile all-rounder, I bring over six years of hands-on experience in web and print design, digital marketing, and social media. With a strong foundation in full-stack development and UI/UX design, I merge tech skills with visual storytelling. I completed 100% of the Full-Stack Software Development programme at Code Institute and built a project-based GitHub portfolio."
-      data-de="Als kreativer und vielseitiger Allrounder bringe ich über sechs Jahre praktische Erfahrung in Web- und Printdesign, digitalem Marketing und sozialen Medien mit. Mit einer soliden Grundlage in der Full-Stack-Entwicklung und UI/UX-Design verbinde ich technische Fähigkeiten mit visuellem Storytelling. Ich habe das Full-Stack-Software-Entwicklungsprogramm am Code Institute zu 100 % abgeschlossen und ein projektbasiertes GitHub-Portfolio aufgebaut.">
-      As a creative and versatile all-rounder, I bring over six years of hands-on experience in web and print design, digital marketing, and social media. With a strong foundation in full-stack development and UI/UX design, I merge tech skills with visual storytelling. I completed 100% of the Full-Stack Software Development programme at Code Institute and built a project-based GitHub portfolio.
+  <section id="projects">
+    <h2>Projekte</h2>
+    <div class="projects">
+      <!-- 10 Project Cards -->
+      <div class="card"><h3>Projekt 1</h3><a href="#">Zum Projekt</a></div>
+      <div class="card"><h3>Projekt 2</h3><a href="#">Zum Projekt</a></div>
+      <div class="card"><h3>Projekt 3</h3><a href="#">Zum Projekt</a></div>
+      <div class="card"><h3>Projekt 4</h3><a href="#">Zum Projekt</a></div>
+      <div class="card"><h3>Projekt 5</h3><a href="#">Zum Projekt</a></div>
+      <div class="card"><h3>Projekt 6</h3><a href="#">Zum Projekt</a></div>
+      <div class="card"><h3>Projekt 7</h3><a href="#">Zum Projekt</a></div>
+      <div class="card"><h3>Projekt 8</h3><a href="#">Zum Projekt</a></div>
+      <div class="card"><h3>Projekt 9</h3><a href="#">Zum Projekt</a></div>
+      <div class="card"><h3>Projekt 10</h3><a href="#">Zum Projekt</a></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Kontakt</h2>
+    <p>
+      <a href="mailto:dein@email.de"><i class="fa fa-envelope"></i> E-Mail</a>
+      <a href="https://github.com/deinname" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      <a href="https://linkedin.com/in/deinname" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
     </p>
   </section>
 
-  <section id="projects" class="section">
-    <h2 class="section-title" data-en="Projects" data-de="Projekte">Projects</h2>
-    <div class="projects">
-      <div class="card">
-        <img src="newsontime.jpg" alt="NewsOnTime project" />
-        <h3 data-en="News On Time" data-de="News On Time">News On Time</h3>
-        <p data-en="A real-time news aggregator built with Django and React. It displays global headlines categorized by region and topic using a clean and responsive interface."
-          data-de="Ein Echtzeit-Nachrichtenaggregator, der mit Django und React erstellt wurde. Er zeigt globale Schlagzeilen an, die nach Region und Thema kategorisiert sind und eine saubere, anpassungsfähige Oberfläche bieten.">
-          A real-time news aggregator built with Django and React. It displays global headlines categorized by region and topic using a clean and responsive interface.
-        </p>
-        <a href="https://github.com/AsliKaradas/newsontime" target="_blank" data-en="View on GitHub" data-de="Auf GitHub ansehen">View on GitHub</a>
-      </div>
-      <div class="card">
-        <img src="healthydailylife.jpg" alt="Healthy Daily Life project" />
-        <h3 data-en="Healthy Daily Life" data-de="Gesundes tägliches Leben">Healthy Daily Life</h3>
-        <p data-en="A personal health and habit tracking web app created as part of a full-stack developer course."
-          data-de="Eine persönliche Gesundheits- und Gewohnheits-Tracking-Web-App, die im Rahmen eines Full-Stack-Entwickler-Kurses erstellt wurde.">
-          A personal health and habit tracking web app created as part of a full-stack developer course.
-        </p>
-        <a href="https://github.com/AsliKaradas/healthydailylife" target="_blank" data-en="View on GitHub" data-de="Auf GitHub ansehen">View on GitHub</a>
-      </div>
+  <footer>
+    <div class="social-icons">
+      <a href="https://github.com/deinname" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com/in/deinname" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="mailto:dein@email.de"><i class="fa fa-envelope"></i></a>
     </div>
-  </section>
+    <p>&copy; <span id="year"></span> Dein Name. Alle Rechte vorbehalten.</p>
+  </footer>
 
-  <section id="contact" class="section">
-    <h2 class="section-title" data-en="Contact" data-de="Kontakt">Contact</h2>
-    <p><strong>Email:</strong> <a href="mailto:karadas.asli@gmx.at" data-en="karadas.asli@gmx.at" data-de="karadas.asli@gmx.at">karadas.asli@gmx.at</a></p>
-    <p><strong>GitHub:</strong> <a href="https://github.com/AsliKaradas" target="_blank" data-en="AsliKaradas" data-de="AsliKaradas">AsliKaradas</a></p>
-    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/asli-karadas-51abaa247/" target="_blank" data-en="asli-karadas" data-de="asli-karadas">asli-karadas</a></p>
-  </section>
+  <button id="scrollTopBtn" title="Nach oben scrollen">↑</button>
 
-  <button class="scroll-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">↑ Top</button>
+  <script>
+    // Scroll to top button
+    const scrollBtn = document.getElementById("scrollTopBtn");
+    window.onscroll = () => {
+      scrollBtn.style.display = (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) ? "block" : "none";
+    };
+    scrollBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
-
-<!-- Smooth Scroll Script -->
-<script>
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth'
-      });
-    });
-  });
-</script>
-
-<!-- Scroll-to-Top Button Script -->
-<script>
-  const scrollTopButton = document.querySelector('.scroll-top');
-
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 500) {
-      scrollTopButton.style.display = 'block';
-    } else {
-      scrollTopButton.style.display = 'none';
-    }
-  });
-
-  scrollTopButton.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
-</script>
-
+    // Aktuelles Jahr im Footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 
 </body>
-
 </html>
-
-
-
-
-
-
-        
