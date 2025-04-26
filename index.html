@@ -46,6 +46,29 @@
       align-items: center;
       text-align: center;
       padding: 2em;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 30%, rgba(26, 175, 93, 0.2) 0%, transparent 40%),
+                  radial-gradient(circle at 80% 60%, rgba(26, 175, 93, 0.15) 0%, transparent 40%);
+      animation: moveBackground 20s infinite alternate;
+      z-index: -1;
+    }
+    
+    @keyframes moveBackground {
+      0% {
+        background-position: 20% 30%, 80% 60%;
+      }
+      100% {
+        background-position: 25% 35%, 75% 65%;
+      }
     }
 
     .hero h1 {
@@ -77,17 +100,21 @@
     }
 
     .card {
-      background: #1a1a1a;
-      padding: 1em;
-      border-radius: 10px;
-      border-left: 5px solid var(--accent-color);
-      transition: transform 0.2s;
+      overflow: hidden;
     }
-
-    .card:hover {
-      transform: scale(1.02);
+    
+    .card img {
+      width: 100%;
+      border-radius: 6px;
+      margin-bottom: 0.5em;
+      object-fit: cover;
+      height: 180px;
+      transition: transform 0.4s ease;
     }
-
+    
+    .card:hover img {
+      transform: scale(1.05);
+    }
     .card a {
       text-decoration: none;
       color: var(--accent-color);
@@ -138,15 +165,20 @@
   </nav>
 
   <section class="hero" id="home">
-    <h1><!-- Dein Mission Statement hier -->  
-    „Ich entwickle moderne Weblösungen mit Fokus auf Ästhetik und Performance.“</h1>
+   <h4>Full-Stack Developer | Digital Designer | Marketing Specialist</h4>
+   <h1>„Ich entwickle moderne Weblösungen mit Fokus auf Ästhetik und Performance.“</h1>
   </section>
 
   <section id="about">
     <div style="flex: 1">
-      <h2>Über mich</h2>
-      <p><!-- Dein Text hier als Platzhalter -->  
-        Hier kannst du etwas über deine Erfahrungen, deinen Werdegang und deine Skills schreiben.
+      <h2>About me</h2>
+      <p>
+        Creative and versatile all-rounder with over 6 years of professional experience
+        in web design, print design and online/social media marketing. As a full-stack
+        developer and UI/UX designer, I combine technical know-how with visual
+        creativity and communication skills. I completed 100%	of the Full-Stack
+        Software Development programme with Code Institute and built a GitHub
+        portfolio with real-world projects.
       </p>
     </div>
     <div>
@@ -155,38 +187,34 @@
   </section>
 
   <section id="projects">
-    <h2>Projekte</h2>
+    <h2>Projects</h2>
     <div class="projects">
       <!-- 10 Project Cards -->
-      <div class="card"><h3>Projekt 1</h3><a href="#">Zum Projekt</a></div>
-      <div class="card"><h3>Projekt 2</h3><a href="#">Zum Projekt</a></div>
-      <div class="card"><h3>Projekt 3</h3><a href="#">Zum Projekt</a></div>
-      <div class="card"><h3>Projekt 4</h3><a href="#">Zum Projekt</a></div>
-      <div class="card"><h3>Projekt 5</h3><a href="#">Zum Projekt</a></div>
-      <div class="card"><h3>Projekt 6</h3><a href="#">Zum Projekt</a></div>
-      <div class="card"><h3>Projekt 7</h3><a href="#">Zum Projekt</a></div>
-      <div class="card"><h3>Projekt 8</h3><a href="#">Zum Projekt</a></div>
-      <div class="card"><h3>Projekt 9</h3><a href="#">Zum Projekt</a></div>
-      <div class="card"><h3>Projekt 10</h3><a href="#">Zum Projekt</a></div>
+      <div class="card"><img src="Hero.png" alt="Project Preview"><h3>News on Time</h3><a href="https://github.com/AsliKaradas/news-ontime">View on Github</a></div>
+      <div class="card"><img src="Hero.png" alt="Project Preview"><h3>Healthy Daily Life</h3><a href="https://github.com/AsliKaradas/healthydailyliferesubmission">View on Github</a></div>
+      <div class="card"><img src="Hero.png" alt="Project Preview"><h3>Living Carpets</h3><a href="https://www.livingcarpets.com/">View the Website</a></div>
+      <div class="card"><img src="Hero.png" alt="Project Preview"><h3>Servoking</h3><a href="https://www.servoking.at/">View the Website</a></div>
+      <div class="card"><img src="Hero.png" alt="Project Preview"><h3>Gurschler & Gurschler Immobilien</h3><a href="https://www.gurschler-immobilien.at/">View the Website</a></div>
+      <div class="card"><img src="Hero.png" alt="Project Preview"><h3>Zahnarzt Wien Mitte</h3><a href="https://www.zahnarztwienmitte.at/">View the Website</a></div>
     </div>
   </section>
 
   <section id="contact">
     <h2>Kontakt</h2>
     <p>
-      <a href="mailto:dein@email.de"><i class="fa fa-envelope"></i> E-Mail</a>
-      <a href="https://github.com/deinname" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-      <a href="https://linkedin.com/in/deinname" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="mailto:karadas.asli@gmx.at"><i class="fa fa-envelope"></i> E-Mail</a>
+      <a href="https://github.com/AsliKaradas" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      <a href="https://www.linkedin.com/in/asli-karadas-51abaa247/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
     </p>
   </section>
 
   <footer>
     <div class="social-icons">
-      <a href="https://github.com/deinname" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://linkedin.com/in/deinname" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="mailto:dein@email.de"><i class="fa fa-envelope"></i></a>
+      <a href="https://github.com/AsliKaradas" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/asli-karadas-51abaa247/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="karadas.asli@gmx.at"><i class="fa fa-envelope"></i></a>
     </div>
-    <p>&copy; <span id="year"></span> Dein Name. Alle Rechte vorbehalten.</p>
+    <p>&copy; <span id="2025"></span> Asli Karadas</p>
   </footer>
 
   <button id="scrollTopBtn" title="Nach oben scrollen">↑</button>
