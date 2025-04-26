@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Webentwickler Portfolio</title>
+  <title>Web Developer Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --bg-color: #0d0d0d;
@@ -18,7 +20,7 @@
 
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Lato', sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
     }
@@ -39,55 +41,47 @@
       font-weight: bold;
     }
 
-     .hero {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 2em;
-    position: relative;
-    overflow: hidden;
+    .hero {
+      position: relative;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2em;
     }
     
-    .hero .spot {
+    .wave {
       position: absolute;
-      border-radius: 50%;
-      background: rgba(26, 175, 93, 0.12);
-      animation: float 10s ease-in-out infinite alternate;
+      bottom: 0;
+      left: 0;
+      width: 200%;
+      height: 200px;
+      animation: waveMove 20s linear infinite;
       z-index: -1;
     }
     
-    .spot1 {
-      width: 300px;
-      height: 300px;
-      top: 20%;
-      left: 10%;
-      animation-delay: 0s;
-    }
-    
-    .spot2 {
-      width: 250px;
-      height: 250px;
-      bottom: 15%;
-      right: 15%;
-      animation-delay: 2s;
-    }
-    
-    @keyframes float {
+    @keyframes waveMove {
       0% {
-        transform: scale(1) translateY(0);
+        transform: translateX(0);
       }
       100% {
-        transform: scale(1.1) translateY(-20px);
+        transform: translateX(-50%);
       }
     }
 
-
-    .hero h1 {
-      font-size: 2.5em;
+    .hero h4 {
+      font-size: 1.2em;  /* kleinere Schriftgröße für den Berufstitel */
+      margin-bottom: 20px;  /* Abstand zwischen h4 und h1 */
+      font-weight: 300;
     }
-
+    
+    .hero h1 {
+      font-size: 2.8em;  /* größere Schriftgröße für das Statement */
+      margin: 0;
+      font-weight: 600;
+    }
     section {
       padding: 4em 2em;
       max-width: 1200px;
@@ -178,8 +172,15 @@
   </nav>
 
   <section class="hero" id="home">
-      <div class="spot spot1"></div>
-      <div class="spot spot2"></div>
+     <!-- SVG-Wellenhintergrund -->
+      <svg class="wave" viewBox="0 0 1440 200" preserveAspectRatio="none">
+        <defs>
+          <pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="2" fill="rgba(26, 175, 93, 0.15)" />
+          </pattern>
+        </defs>
+        <rect width="1440" height="200" fill="url(#dots)" />
+      </svg>
       <h4>Full-Stack Developer | Digital Designer | Marketing Specialist</h4>
       <h1>CREATING DIGITAL SOLUTIONS THAT CONNECT AND CONVERT</h1>
   </section>
@@ -215,7 +216,10 @@
   </section>
 
   <section id="contact">
-    <h2>Kontakt</h2>
+    <h2>Contact</h2>
+     <p>I’m currently open to new professional opportunities in web development, design, or digital marketing.  
+     Feel free to get in touch – I’d love to hear from you.</p>
+    <p>
     <p>
       <a href="mailto:karadas.asli@gmx.at"><i class="fa fa-envelope"></i> E-Mail</a>
       <a href="https://github.com/AsliKaradas" target="_blank"><i class="fab fa-github"></i> GitHub</a>
